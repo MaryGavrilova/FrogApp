@@ -1,5 +1,5 @@
 public class FrogCommands {
-    public static FrogCommand jumpCommand(Frog frog, int steps) {
+    public static FrogCommand jumpRightCommand(Frog frog, int steps) {
         FrogCommand frogCommand = new FrogCommand() {
             @Override
             public boolean doCommand() {
@@ -14,21 +14,18 @@ public class FrogCommands {
         return frogCommand;
     }
 
-    public static FrogCommand comeAshoreCommand(Frog frog, int currentPosition) {
+    public static FrogCommand jumpLeftCommand(Frog frog, int steps) {
         FrogCommand frogCommand = new FrogCommand() {
             @Override
             public boolean doCommand() {
-                return frog.comeAshore();
+                return frog.jump(steps);
             }
 
             @Override
             public boolean undoCommand() {
-                frog.setPosition(currentPosition);
-                return true;
+                return frog.jump(steps * (-1));
             }
         };
         return frogCommand;
     }
-
-
 }

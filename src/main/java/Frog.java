@@ -30,23 +30,5 @@ public class Frog {
         }
     }
 
-    public boolean comeAshore() {
-        if (position == MIN_POSITION | position == MAX_POSITION) {
-            System.out.println("Лягушка уже на берегу");
-            return false;
-        } else {
-            if (MAX_POSITION - position > MAX_POSITION / 2) {
-                position = MIN_POSITION;
-                System.out.println("Лягушка добралась до левого берега");
-                return true;
-            } else if (MAX_POSITION - position < MAX_POSITION / 2) {
-                position = MAX_POSITION;
-                System.out.println("Лягушка добралась до правого берега");
-                return true;
-            } else {
-                System.out.println("Лягушка не смогла решить к какому берегу плыть");
-                return false;
-            }
-        }
-    }
+
 }

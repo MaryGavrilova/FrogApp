@@ -12,7 +12,6 @@ public class Main {
             System.out.println("Варианты команд:\n" +
                     "+N - прыгни на N шагов направо\n" +
                     "-N - прыгни на N шагов налево\n" +
-                    "= - выйди на ближайший берег\n" +
                     "<< - отмени последнюю команду\n" +
                     "!! - повтори последнюю команду\n" +
                     "0 - выход");
@@ -45,20 +44,22 @@ public class Main {
                         }
                         print(frog);
                     }
-                } else if (input.equals("=")) {
-                    FrogCommand cmd = FrogCommands.comeAshoreCommand(frog, frog.getPosition());
+                } else if (input.startsWith("+")) {
+                    FrogCommand cmd = FrogCommands.jumpRightCommand(frog, Integer.parseInt(input));
+                    if (cmd.doCommand()) {
+                        commands.add(cmd);
+                        curCommand++;
+                    }
+                    print(frog);
+                } else if (input.startsWith("-")) {
+                    FrogCommand cmd = FrogCommands.jumpLeftCommand(frog, Integer.parseInt(input));
                     if (cmd.doCommand()) {
                         commands.add(cmd);
                         curCommand++;
                     }
                     print(frog);
                 } else {
-                    FrogCommand cmd = FrogCommands.jumpCommand(frog, Integer.parseInt(input));
-                    if (cmd.doCommand()) {
-                        commands.add(cmd);
-                        curCommand++;
-                    }
-                    print(frog);
+                    System.out.println("Такой команды нет, попробуйте ввести команду снова");
                 }
             }
         } catch (NumberFormatException exception) {
