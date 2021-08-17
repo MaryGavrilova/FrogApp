@@ -29,6 +29,4 @@ public class Frog {
             return true;
         }
     }
-
-
 }

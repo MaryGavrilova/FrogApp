@@ -8,7 +8,7 @@ public class FrogCommands {
 
             @Override
             public boolean undoCommand() {
-                return frog.jump(steps * (-1));
+                return jumpLeftCommand(frog, steps).doCommand();
             }
         };
         return frogCommand;
@@ -18,12 +18,12 @@ public class FrogCommands {
         FrogCommand frogCommand = new FrogCommand() {
             @Override
             public boolean doCommand() {
-                return frog.jump(steps);
+                return frog.jump(-steps);
             }
 
             @Override
             public boolean undoCommand() {
-                return frog.jump(steps * (-1));
+                return jumpRightCommand(frog, steps).doCommand();
             }
         };
         return frogCommand;

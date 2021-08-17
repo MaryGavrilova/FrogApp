@@ -45,14 +45,14 @@ public class Main {
                         print(frog);
                     }
                 } else if (input.startsWith("+")) {
-                    FrogCommand cmd = FrogCommands.jumpRightCommand(frog, Integer.parseInt(input));
+                    FrogCommand cmd = FrogCommands.jumpRightCommand(frog, Math.abs(Integer.parseInt(input)));
                     if (cmd.doCommand()) {
                         commands.add(cmd);
                         curCommand++;
                     }
                     print(frog);
                 } else if (input.startsWith("-")) {
-                    FrogCommand cmd = FrogCommands.jumpLeftCommand(frog, Integer.parseInt(input));
+                    FrogCommand cmd = FrogCommands.jumpLeftCommand(frog, Math.abs(Integer.parseInt(input)));
                     if (cmd.doCommand()) {
                         commands.add(cmd);
                         curCommand++;
